@@ -4,7 +4,7 @@ ifneq (,$(wildcard .env))
 endif
 
 # if your migrate error generated temp in this project 
-migrate-temp:
+cornucopia-temp:
 	$env:TEMP="$(PWD)\temp"; $env:TMP="$(PWD)\temp"; make cornucopia
 
 
