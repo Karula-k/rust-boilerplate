@@ -2,7 +2,6 @@
 name = "rust-boilerplate"
 version = "0.1.0"
 edition = "2024"
-
 [dependencies]
 axum = { version = "0.8.9" }
 tokio = { version = "1", features = ["full"] }
@@ -11,11 +10,10 @@ tokio-postgres = { version = "0.7", features = [
     "with-time-0_3",
     "with-uuid-1",
 ] }
-deadpool-postgres = "0.14"
 postgres-types = { version = "0.2", features = [
     "derive"
 ] }
-cornucopia = "1.0"
+cornucopia = { path = "./src/db" }
 refinery = { version = "0.8", features = [
     "tokio-postgres"
 ] }
