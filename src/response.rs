@@ -1,17 +1,19 @@
 use axum::{ Json, http::StatusCode, response::{IntoResponse, Response}};
 use serde::Serialize;
 
-#[derive(Serialize)]
-pub struct Message {
-  pub message: String
-}
-pub enum ApiResponse{
+
+
+pub enum ApiResponse<T>
+where
+    T: Serialize,
+{
     OK,
     Created,
-    JsonData(Vec<Message>),
+    JsonData(T),
 }
 
-impl IntoResponse for ApiResponse {
+
+impl <T> IntoResponse for ApiResponse<T>  where T: Serialize,{
     fn into_response(self) -> Response {
         match self{
             Self::OK=>(StatusCode::OK).into_response(),
