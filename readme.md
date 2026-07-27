@@ -52,6 +52,12 @@ choco install make
 
 [axum-quick-tutorial](https://www.shuttle.dev/blog/2023/12/06/using-axum-rust)
 
+[better-axum-tutorial](https://www.rustfinity.com/blog/axum-rust-tutorial)
+
+[tokio:postgress wiki](https://deepwiki.com/rust-postgres/rust-postgres/6.1-connection-strings-and-config-builder)
+
 [deadpool postgres](https://docs.rs/deadpool-postgres/latest/deadpool_postgres/)
 
 [tokio-postgress](https://docs.rs/tokio-postgres/latest/tokio_postgres/)
+
+[graphql-reference](https://romankudryashov.com/blog/2020/12/graphql-rust/#_overview)
