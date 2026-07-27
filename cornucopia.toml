@@ -1,10 +1,2 @@
-[manifest.package]
-name = "rust-boilerplate"
-use-workspace-deps = true
-
-
-[manifest.dependencies]
-serde = {features = ["derive"] }
-
 [types]
 derive-traits = ["serde::Serialize", "serde::Deserialize"]
