@@ -1,16 +1,13 @@
 // will remove when implementation all Api response and error response
 #![allow(dead_code)]
-mod config;
-mod error;
-mod response;
-mod users_handler;
-
+mod routes;
+mod utils;
+mod handlers;
+mod models;
 use std::sync::Arc;
 
-use axum::{Router, routing::get};
 use tokio_postgres::{ Client, NoTls};
-
-use crate::config::Config;
+use crate::{routes::routes::routes, utils::config::Config};
 struct AppState {
     db_pool: Client,
 }
@@ -29,7 +26,7 @@ async fn main() {
      let app_state = Arc::new(AppState{
         db_pool: client,
      });
-      let app = Router::new().route("/", get(|| async { "Hello, World!" })).route("/users", get(users_handler::list_users)).with_state(app_state);
+      let app = routes().with_state(app_state);
       let listener = tokio::net::TcpListener::bind(config.address()).await.unwrap();
       axum::serve(listener, app).await.unwrap();
 }
