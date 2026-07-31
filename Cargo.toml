@@ -10,6 +10,7 @@ tokio-postgres = { version = "0.7", features = [
     "with-time-0_3",
     "with-uuid-1",
 ] }
+rust-argon2 = "3.0"
 postgres-types = { version = "0.2", features = [
     "derive"
 ] }

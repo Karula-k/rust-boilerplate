@@ -61,3 +61,10 @@ choco install make
 [tokio-postgress](https://docs.rs/tokio-postgres/latest/tokio_postgres/)
 
 [graphql-reference](https://romankudryashov.com/blog/2020/12/graphql-rust/#_overview)
+
+[jwt](https://github.com/Keats/jsonwebtoken)
+
+[argon2](https://crates.io/crates/argon2)
+
+
+https://rustify.rs/glossary/argon2
