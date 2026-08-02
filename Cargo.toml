@@ -11,6 +11,7 @@ tokio-postgres = { version = "0.7", features = [
     "with-uuid-1",
 ] }
 rust-argon2 = "3.0"
+jsonwebtoken = { version = "11", features = ["aws_lc_rs"] }
 postgres-types = { version = "0.2", features = [
     "derive"
 ] }
@@ -28,3 +29,4 @@ uuid = { version = "1", features = [
     "v4"
 ] }
 dotenv = "0.15"
+rand = "0.10.2"
