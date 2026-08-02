@@ -25,11 +25,12 @@ async fn main() {
         }
     });
     let address = config.address();
-     let app_state = Arc::new(AppState{
+    let app_state = Arc::new(AppState{
         db_pool: client,
         env: config,
      });
-      let app = routes().with_state(app_state);
+     
+      let app = routes(&app_state).with_state(app_state);
       let listener = tokio::net::TcpListener::bind(address).await.unwrap();
       axum::serve(listener, app).await.unwrap();
 }
