@@ -3,7 +3,7 @@ SELECT * FROM users
 WHERE users.id = :id LIMIT 1;
 
 --! list_users
-SELECT * FROM users
+SELECT id,username,created_at,updated_at FROM users
 ORDER BY id
 LIMIT :limit
 OFFSET :offset;
