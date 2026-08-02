@@ -29,3 +29,12 @@ impl From<tokio_postgres::Error> for AppError {
         }
     }
 }
+
+impl  From<jsonwebtoken::errors::Error> for AppError {
+    fn from(err: jsonwebtoken::errors::Error)->Self{
+        match err.kind() {
+            jsonwebtoken::errors::ErrorKind::InvalidToken => AppError::BadRequest("Token was invalid".into()),
+            _ => AppError::Internal(err.to_string()),
+        }
+    }
+}
