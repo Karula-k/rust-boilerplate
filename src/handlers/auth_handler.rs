@@ -6,9 +6,9 @@ use cornucopia::queries::{users};
 use rand::RngExt;
 
 
-use crate::{AppState, models::login_models::LoginForm, utils::{error::AppError, response::ApiResponse}};
+use crate::{AppState, middleware::jwt_strategy, models::login_models::{LoginForm, LoginResponse}, utils::{error::AppError, response::ApiResponse}};
 
-pub async fn login(State( states,): State<Arc<AppState>>, Json(payload): Json<LoginForm>,)->Result<ApiResponse<users::GetUserByUsername>,AppError>{
+pub async fn login(State( states,): State<Arc<AppState>>, Json(payload): Json<LoginForm>,)->Result<ApiResponse<LoginResponse>,AppError>{
   
     let user:users::GetUserByUsername = users::get_user_by_username()
         .bind(&states.db_pool, &payload.username).one().await?;
@@ -16,8 +16,14 @@ pub async fn login(State( states,): State<Arc<AppState>>, Json(payload): Json<Lo
     let matches = argon2::verify_encoded(&user.password, &payload.password.as_bytes()).unwrap();
     if !matches {
         return  Err(AppError::Unauthorized);
-    }   
- Ok(ApiResponse::JsonData(user))
+    }
+    let token = jwt_strategy::generated_access_and_refresh_token(&user, &states.env).await?;    
+    Ok(ApiResponse::JsonData(LoginResponse{
+        id: user.id,
+        username: user.username,
+        access_token: token.access_token,
+        refresh_token: token.refresh_token,
+    }))
 }
 
 pub async fn register(State(states): State<Arc<AppState>>, Json(payload): Json<LoginForm>)->Result<ApiResponse<()>,AppError>{
