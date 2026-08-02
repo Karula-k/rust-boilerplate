@@ -65,6 +65,7 @@ choco install make
 [jwt](https://github.com/Keats/jsonwebtoken)
 
 [argon2](https://crates.io/crates/argon2)
+[random](https://docs.rs/rand/latest/rand/rngs/index.html)
 
 
 https://rustify.rs/glossary/argon2
