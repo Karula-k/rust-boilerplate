@@ -1280,6 +1280,7 @@ name = "rust-boilerplate"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "chrono",
  "cornucopia",
  "dotenv",
  "jsonwebtoken",
