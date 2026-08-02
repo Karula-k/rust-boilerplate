@@ -7,7 +7,6 @@ endif
 cornucopia-temp:
 	$env:TEMP="$(PWD)\temp"; $env:TMP="$(PWD)\temp"; make cornucopia
 
-
 migrate:
 	refinery migrate -e DATABASE_URL -p ./database/migrations
 
